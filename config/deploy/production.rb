@@ -9,7 +9,7 @@ set :branch, 'master'
 
 
 set :ssh_options, {
-  keys: %w[/Users/adk/.ssh/id_rsa],
+  keys: %w[/Users/adk/.ssh/id_rsa.pub],
   forward_agent: true,
   auth_methods: %w[publickey password],
   port: 2222
