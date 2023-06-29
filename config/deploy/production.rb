@@ -2,16 +2,12 @@
 
 server '192.227.241.211', user: 'deploy', roles: %w[app web db], primary: true
 
+set :stage, :production
 set :rails_env, :production
 
-# Custom SSH Options
-# ==================
-# You may pass any option but keep in mind that net/ssh understands a
-# limited set of options, consult the Net::SSH documentation.
-# http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start
-#
-# Global options
-# --------------
+set :branch, 'master'
+
+
 set :ssh_options, {
   keys: %w[/Users/adk/.ssh/id_rsa],
   forward_agent: true,

@@ -15,8 +15,27 @@ set :deploy_user, 'deploy'
 append :linked_files, 'config/database.yml', 'config/master.key'
 
 # Default value for linked_dirs is []
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system', 'storage'
+set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle .bundle public/system public/uploads storage]
 
-#set :rvm_map_bins, %w{gem rake ruby rails bundle}
+set :keep_releases, 3
+
+set :conditionally_migrate, true
+
+# Set unique identifier for background jobs
+set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
+
+## Tasks
+before 'deploy:starting', 'config_files:upload'
+
+set :initial, true
+before 'deploy:migrate', 'database:create' if fetch(:initial)
+
+after 'deploy:finishing', 'whenever:update_crontab'
 
 after 'deploy:publishing', 'passenger:restart'
+
+after 'deploy:publishing', 'application:reload'
+
+after 'deploy:starting', 'sidekiq:quiet'
+after 'deploy:reverted', 'sidekiq:restart'
+after 'deploy:published', 'sidekiq:restart'
