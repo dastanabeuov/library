@@ -1,0 +1,49 @@
+<div class="info mb-3">
+  <h2>Все книги</h2>
+</div>
+
+<div class="row">
+    <div class="col-9">
+      
+      <%= render "books/search" %>
+      <%== pagy_bootstrap_nav(@pagy) %>
+      <p><small><em><%= link_to "Добавить книгу", new_book_path %></em></small></p>
+      
+      <div class="books row row-cols-1 row-cols-md-4 g-4">
+        <% @books.each do |book| %>
+          <div class="col">          
+            <div class="card h-100 border-0 rounded ml-2 mr-2 shadow mb-3" style="width: 12.5rem; min-height: 350px; max-height:500px;">
+              <% if book.main_pdf.attached? %>
+                <% unless params[:controller] == 'books' && params[:action] == 'show' %>
+                  <%= image_tag book.main_pdf.preview(resize_to_limit: [300, 400]), class: "img-fluid card-img-top rounded" %>
+                <% end %>
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title"><%= book.title.truncate(25, omission: '...') %></h5>
+              </div>
+              <div class="card-footer text-center">
+                <%= link_to "Читать", book, class: "btn btn-link btn-sm" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div class="col-3">
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">Категории:</div>
+        
+        <ul class="list-group">
+          <% @categories.each do |category| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <%= link_to "#{category.name}", filter_category_path(category) %>
+              <span class="badge bg-primary rounded-pill"><%= category.books.count %></span>
+            </li>
+          <% end %>
+        </ul>
+      
+      </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<%= form_with(model: book) do |form| %>
+  <%= render "shared/errors", object: book %>
+
+  <div class="row">
+    <div class="col-9">
+      <div>
+        <%= form.label :title %>
+        <%= form.text_field :title, class: "w-100" %>
+      </div>
+
+      <div>
+        <%= form.label :author %>
+        <%= form.text_field :author, class: "w-100" %>
+      </div>
+
+      <div>
+        <%= form.label :description %>
+        <%= form.text_area :description, class: "w-100" %>
+      </div>
+
+      <div>
+        <%= form.label :main_pdf %>
+        <%= form.file_field :main_pdf %>
+      </div>
+
+      <div>
+        <%= form.label :user_id, 'ID Создателя' %>
+        <%= form.text_field :user_id, value: current_user.id, class: "w-100" %>
+      </div>
+
+      <div class="pt-3">
+        <%= form.submit %>
+      </div>
+    </div>
+
+    <div class="col-3">
+
+      <div class="checkboxes">
+        <%= form.label :category, 'Категории:' %>
+        <%= form.collection_check_boxes :category_ids, Category.all, :id, :name %>
+      </div>
+            
+    </div>
+  </div>
+<% end %>

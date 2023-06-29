@@ -1,0 +1,20 @@
+<h1>Категории</h1>
+<p><small><em><%= link_to "Новая категория", new_category_path %></em></small></p>
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">Название</th>
+      <th scope="col">количество книг в категории</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr class="table-light">
+        <th><%= category.name %></th>
+        <td><%= category.books.size %></td>
+        <td><%= link_to "Показать эту категорию", category %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

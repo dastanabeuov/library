@@ -1,0 +1,42 @@
+<header class="p-3 text-bg-dark">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <%#= image_tag 'digital_library.png' %>
+      </a>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <%= active_link_to "Главная", root_path, title: "Главная страница", alt: "Корневая страница", class: "nav-link px-2 text-white" %>
+        <%= active_link_to "Все книги", books_path, title: "Список книг", alt: "Каталог книг", class: "nav-link px-2 text-white" %>
+        <%= active_link_to "Помощь", main_pages_help_path, title: "Поддержка", alt: "Сапорт", class: "nav-link px-2 text-white" %>
+        <%= active_link_to "Информация", main_pages_info_path, title: "Справочник", alt: "Контакты", class: "nav-link px-2 text-white" %>
+        
+        <% if current_user && current_user.super_admin? %>
+          <%= active_link_to "Пользователи", users_path, title: "Создать пользователя", class: "nav-link px-2 text-white" %>
+          <%= active_link_to "Группы", groups_path, title: "Создать группу", class: "nav-link px-2 text-white" %>
+        <% end %>
+
+        <% if current_user && current_user.admin? %>
+          <%= active_link_to "Пользователи", users_path, title: "Создать пользователя", class: "nav-link px-2 text-white" %>
+        <% end %>
+      </ul>
+
+      <!--<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+      </form> -->
+
+      <div class="text-end">
+        <% if user_signed_in? %>
+          <div , class="btn btn-outline-light me-2"><%= current_user.full_name %></div>
+          <%= link_to "Настройка", edit_user_registration_path, data: { turbo_method: :get }, title: "Настройка", alt: "Редактировать", class: "btn btn-outline-light me-2", type: "button" %>
+          <%= link_to "Выйти", destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'Вы уверены?' }, title: "Выйти", alt: "Покинуть", class: "btn btn-warning", type: "button" %>
+        <% else %>
+
+          <%= link_to "Войти", new_user_session_path, data: { turbo_method: :get }, title: "Войти", alt: "Войти", class: "btn btn-outline-light me-2", type: "button" %>
+
+          <%= link_to "Регистрация", new_contact_form_registration_path, data: { turbo_method: :get }, title: "Авторизация", alt: "Создать профиль", class: "btn btn-warning", type: "button" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>

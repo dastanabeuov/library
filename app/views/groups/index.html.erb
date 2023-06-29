@@ -1,0 +1,25 @@
+<h1>Группы</h1>
+<p><small><em><%= link_to "Новая группа", new_group_path %></em></small></p>
+<div class="row">
+  <div class="col-12">
+    <div class="groups row row-cols-1 row-cols-md-4 g-4">
+      <% @groups.each do |group| %>
+        <div class="col">
+          <div class="card h-100 border-0 rounded ml-2 mr-2 shadow mb-3">
+            <% if group.logo.attached? %>
+              <% unless params[:controller] == 'groups' && params[:action] == 'show' %>
+                <%= image_tag group.logo.preview(resize_to_limit: [200, 300]), class: "img-fluid card-img-top rounded" %>
+              <% end %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= group.name.truncate(25, omission: '...') %></h5>
+            </div>
+            <div class="card-footer text-center">
+              <%= link_to "Показать эту группу", group %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

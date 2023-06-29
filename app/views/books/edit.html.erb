@@ -1,0 +1,10 @@
+<h1>Редактировать книгу</h1>
+
+<%= render "form", book: @book %>
+
+<br>
+
+<div>
+  <%= link_to "Показать эту книгу", @book %> |
+  <%= link_to "Назад к книгам", books_path %>
+</div>

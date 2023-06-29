@@ -1,0 +1,12 @@
+<%= form_with(model: category) do |form| %>
+  <%= render "shared/errors", object: category %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

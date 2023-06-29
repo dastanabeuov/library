@@ -1,0 +1,25 @@
+<div class="pt-3 pb-3">
+  <%= link_to 'Очистить фильтр', request.path, class: 'btn btn-sm btn-outline-secondary' if request.query_parameters.any? %>
+
+  <%= search_form_for @q, class: 'form-outline' do |form| %>
+    
+    <div class="input-group">
+      <div class="field">
+        <%= form.search_field :title_cont, class: 'form-control', placeholder: 'Заголовок' %>
+      </div>
+
+      <div class="field">
+        <%= form.search_field :author_cont, class: 'form-control', placeholder: 'Автор' %>
+      </div>
+
+      <div class="field">
+        <%= form.search_field :description_cont, class: 'form-control', placeholder: 'Описание' %>
+      </div>
+
+      <div class="actions">
+          <%= form.submit 'Поиск', class: 'btn btn-outline-dark' %>
+      </div>
+    </div>
+    
+  <% end %>
+</div>

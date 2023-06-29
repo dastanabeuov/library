@@ -1,0 +1,7 @@
+<%= render @group %>
+
+<div class="pt-5">
+  <%= link_to "Редактировать группу", edit_group_path(@group) %> |
+  <%= link_to "Назад к группам", groups_path %> |
+  <%= link_to "Удалить эту группу", @group, data: { turbo_method: :delete, turbo_confirm: 'Вы уверены?' } %>
+</div>

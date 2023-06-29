@@ -1,0 +1,11 @@
+<%= render @user %>
+
+<div class="pt-5">
+  <% if current_user.super_admin? || current_user.admin? %>
+    <%= link_to "Редактировать АДМИНА", edit_user_registration_path %> |
+  <% else %>
+    <%= link_to "Редактировать пользователя", edit_user_path(user) %> |
+  <% end %>
+  <%= link_to "Назад к пользователям", users_path %> |
+  <%= link_to "Удалить этого пользователя", @user, data: { turbo_method: :delete, turbo_confirm: 'Вы уверены?' } %>
+</div>

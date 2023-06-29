@@ -1,0 +1,94 @@
+<h1>Редактирование Пользователя</h1>
+
+<div class="row">
+  <div class="col-12">
+    <%= bootstrap_form_for(@user) do |f| %>
+      <%= render "shared/errors", object: @user %>
+      
+      <% if current_user.super_admin? %>
+        <div class="field">
+          <%= f.label :group_ids, 'Выбор нескольких групп' %>
+          <em>(доступен только для Супер Админа)</em>
+          <div class="field checkboxes">
+            <%= f.collection_check_boxes :group_ids, Group.all, :id, :name, hide_label: true %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :group_id, 'Выбор одной группы' %>
+          <%= f.select :group_id, options_for_select(Group.all.collect{ |g| [g.name, g.id] }), hide_label: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :role, "Все роли" %>
+          <em>(доступен только для Супер Админа)</em>
+          <%= f.select :role, User.roles.keys, hide_label: true %>
+        </div>
+      <% end %>
+
+      <% if current_user.admin? %>
+        <div class="field">
+          <%= f.label :group_id, "Группа: #{current_user.group.name}" %>
+          <%= f.text_field :group_id, value: current_user.group.id, hide_label: true, type: "hidden" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :role, "Роль" %>
+          <%= f.select :role, User.roles.keys.delete_if {|key, value| key == "super_admin" } , hide_label: true %>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :first_name %><br />
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", hide_label: true, required: "required" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :last_name %><br />
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", hide_label: true, required: "required" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :middle_name %><br />
+        <%= f.text_field :middle_name, autofocus: true, autocomplete: "middle_name", hide_label: true, required: "required" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :position %><br />
+        <%= f.text_field :position, autofocus: true, autocomplete: "position", hide_label: true, required: "required" %>
+      </div>
+
+      <div class="field pb-5">
+        <%= f.label :phone %><br />
+        <%= f.text_field :phone, autofocus: true, autocomplete: "phone", hide_label: true, required: "required" %>
+      </div>
+      
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", hide_label: true, required: "required" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> минимум символов)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", hide_label: true, required: "required" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", hide_label: true, required: "required" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Зарегистрировать" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="pt-5">
+  <%= link_to "Показать пользователя", @user %> |
+  <%= link_to "Назад к пользователям", users_path %>
+</div>

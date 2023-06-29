@@ -1,0 +1,68 @@
+<div class="pt-2 pb-2" id="<%= dom_id user %>">
+
+  <div class="row">
+    <div class="col-9">
+      <p>
+        <strong>Имя:</strong>
+        <%= user.first_name %>
+      </p>
+
+      <p>
+        <strong>Фамилия:</strong>
+        <%= user.last_name %>
+      </p>
+
+      <p>
+        <strong>Отчество:</strong>
+        <%= user.middle_name %>
+      </p>
+
+      <p>
+        <strong>Позиция:</strong>
+        <%= user.position %>
+      </p>
+
+      <p>
+        <strong>Телефон:</strong>
+        <%= user.phone %>
+      </p>
+
+      <p>
+        <strong>Активация:</strong>
+        <%= user.active %>
+      </p>
+
+      <p>
+        <strong>Роль:</strong>
+        <%= user.role %>
+      </p>
+
+      <p>
+        <strong>Почта:</strong>
+        <%= user.email %>
+      </p>
+    </div>
+
+    <div class="col-3">
+      <p>
+        <strong>Группа:</strong>
+        <%= user.group.name %>
+      </p>
+
+      <% if user.groups %>
+        <p>
+          <strong>Другие Группы:</strong>
+          <ul class="list-group">
+            <% user.groups.each do |group| %>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <%= link_to "#{group.name}", group_path(group) %>
+              </li>
+            <% end %>
+          </ul>
+        </p>
+      <% end %>
+
+    </div>
+  </div>
+
+</div>

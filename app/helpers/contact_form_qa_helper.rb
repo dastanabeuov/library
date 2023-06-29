@@ -1,0 +1,2 @@
+module ContactFormQaHelper
+end

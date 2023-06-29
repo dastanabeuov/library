@@ -1,0 +1,15 @@
+<%= form_with scope: :contact_form_qa, url: contact_form_qa_index_path, method: :post, local: true, class: "container" do |form| %>
+  <div class="form-group">
+    <%= form.label :first_name, "Имя" %>
+    <%= form.text_area :first_name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :email, "Почта" %>
+    <%= form.email_field :email, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :message, "Сообщение" %>
+    <%= form.text_area :message, class: "form-control", rows: "10" %>
+  </div>
+  <%= form.submit "Отправить", class: "btn btn-primary" %>
+<% end %>

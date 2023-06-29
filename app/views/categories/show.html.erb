@@ -1,0 +1,9 @@
+<%= render @category %>
+
+<div>
+  <%= link_to "Редактировать категорию", edit_category_path(@category) %> |
+  <%= link_to "Назад к категориям", categories_path %> |
+  <%= link_to "Удалить эту категорию", @category, data: { turbo_method: :delete, turbo_confirm: 'Вы уверены?' } %>
+</div>
+
+<div class="pt-5"><%= link_to "Вернуться к созданию книги", new_book_path %></div>

@@ -1,0 +1,101 @@
+<h2>Редактировать <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+    <% if current_user.super_admin? %>
+      <div class="field">
+        <%= f.label :group_ids, 'Выбор нескольких групп' %>
+        <em>(доступен только для Супер Админа)</em>
+        <div class="field checkboxes">
+          <%= f.collection_check_boxes :group_ids, Group.all, :id, :name %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :group_id, 'Выбор одной группы' %>
+        <%= f.select :group_id, options_for_select(Group.all.collect{ |g| [g.name, g.id] }) %>
+      </div>
+
+      <div class="field">
+        <%= f.label :role, "Все роли" %>
+        <em>(доступен только для Супер Админа)</em>
+        <%= f.select :role, User.roles.keys %>
+      </div>
+    <% end %>
+
+    <% if current_user.admin? %>
+      <div class="field">
+        <%= f.label :group_id, "Группа: #{current_user.group.name}" %>
+        <%= f.text_field :group_id, value: current_user.group.id, hide_label: true, type: "hidden" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :role, "Роль" %>
+        <%= f.select :role, User.roles.keys.delete_if {|key, value| key == "super_admin" } , hide_label: true %>
+      </div>     
+    <% end %>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", required: "required" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", required: "required" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :middle_name %><br />
+    <%= f.text_field :middle_name, autofocus: true, autocomplete: "middle_name", required: "required" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :position %><br />
+    <%= f.text_field :position, autofocus: true, autocomplete: "position", required: "required" %>
+  </div>
+
+  <div class="field pb-5">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone, autofocus: true, autocomplete: "phone", required: "required" %>
+  </div>
+  
+  <div class="field pb-5">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", required: "required" %>
+  </div>
+  
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password %> <i>(оставьте пустым, если вы не хотите его менять)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password", required: "required" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> минимум символов</em>
+    <% end %>
+  </div>
+
+  <div class="field pb-5">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", required: "required" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :current_password, 'Текущий пароль' %> <i>(нам нужен ваш текущий пароль, чтобы подтвердить ваши изменения)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", required: "required" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Обновлять" %>
+  </div>
+<% end %>
+
+<h4>Отменить мою учетную запись</h4>
+
+<div>Несчастный? <%= button_to "Отменить мою учетную запись", registration_path(resource_name), data: { confirm: "Вы уверены?", turbo_confirm: "Вы уверены?" }, method: :delete %></div>
+
+<%= link_to "Назад", :back %>

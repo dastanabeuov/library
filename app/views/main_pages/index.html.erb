@@ -1,0 +1,16 @@
+<div class="p-5 text-center rounded-3">
+  <h1 class="text-body-emphasis">Добро пожаловать в электронную библиотеку</h1>
+  <p class="col-lg-8 mx-auto fs-5 text-muted">
+    Электронная Библиотечная Система — это веб-приложение для чтения электронных книг с огромной библиотекой рассчитанная для студентов вузов и колледжей.<br>
+    <% if !user_signed_in? %>
+      <small><em class="text-secondary">Зарегистритуйтесь или авторизуйтесь, чтобы читать книги онлайн.</em></small>
+    <% end %>
+  </p>
+  <% if !user_signed_in? %>
+    <div class="d-inline-flex gap-2 mb-5">
+      <%= link_to "Войти", new_user_session_path, method: :get, title: "Войти", alt: "Войти", class: "d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill", type: "button" %>
+
+      <%= link_to "Регистрация", new_contact_form_registration_path, data: { turbo_method: :get }, title: "Авторизация", alt: "Создать профиль", class: "btn btn-outline-secondary btn-lg px-4 rounded-pill", type: "button" %>
+    </div>
+  <% end %>
+</div>

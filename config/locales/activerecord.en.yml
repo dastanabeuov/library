@@ -1,0 +1,33 @@
+ru:
+  activerecord:
+    models:
+      book: "Книгу"
+      category: "Категорию"
+      group: "Группу"
+      user: "Пользователь"
+    attributes:
+      book:
+        title: "Заголовок"
+        author: "Автор"
+        description: "Описание"
+        main_pdf: "Главный файл(pdf)"
+      category:
+        name: "Название"
+      group:
+        name: "Название"
+        group_type: "Тип"
+        code: "Код"
+        email: "Почта"
+        phone: "Телефон"
+        active: "Активация"
+        user_id: "Пользователь"
+      user:
+        first_name: "Имя"
+        last_name: "Фамилия"
+        middle_name: "Отчество"
+        position: "Должность"
+        phone: "Телефон"
+        active: "Активация"
+        email: "Почта"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"

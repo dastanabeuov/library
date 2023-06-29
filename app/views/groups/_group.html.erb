@@ -1,0 +1,56 @@
+<div class="pt-2 pb-2" id="<%= dom_id group %>">
+
+  <div class="row">
+    <div class="col-9">
+      <p>
+        <strong>Имя:</strong>
+        <%= group.name %>
+      </p>
+
+      <p>
+        <strong>Тип:</strong>
+        <%= group.group_type %>
+      </p>
+
+      <p>
+        <strong>Код:</strong>
+        <%= group.code %>
+      </p>
+
+      <p>
+        <strong>Почта:</strong>
+        <%= group.email %>
+      </p>
+
+      <p>
+        <strong>Телефон:</strong>
+        <%= group.phone %>
+      </p>
+
+      <p>
+        <strong>Активация:</strong>
+        <%= group.active %>
+      </p>
+
+      <p>
+        <% if group.logo.attached? %>
+          <% if params[:controller] == 'groups' && params[:action] == 'show' %>
+            <%= image_tag book.logo.preview(resize_to_limit: [300, 400]), class: "img-fluid border border-primary" %>
+          <% end %>
+        <% end %>
+      </p>
+    </div>
+
+    <div class="col-3">
+      <strong>Пользователи:</strong>
+      <ul class="list-group">
+        <% @group_users.each do |user| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <%= link_to "#{user.full_name}", user_path(user) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+</div>
