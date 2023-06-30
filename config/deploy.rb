@@ -25,7 +25,7 @@ set :conditionally_migrate, true
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 
 ## Tasks
-before 'deploy:starting', 'config_files:upload'
+#before 'deploy:starting', 'config_files:upload'
 
 set :initial, true
 before 'deploy:migrate', 'database:create' if fetch(:initial)
