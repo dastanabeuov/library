@@ -374,7 +374,7 @@ DEPENDENCIES
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
-  json (= 2.6.3)
+  json (~> 2.6, >= 2.6.3)
   mailtrap
   memory_profiler
   omniauth
