@@ -27,15 +27,15 @@ set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 ## Tasks
 #before 'deploy:starting', 'config_files:upload'
 
-set :initial, true
-before 'deploy:migrate', 'database:create' if fetch(:initial)
+#set :initial, true
+#before 'deploy:migrate', 'database:create' if fetch(:initial)
 
-after 'deploy:finishing', 'whenever:update_crontab'
+#after 'deploy:finishing', 'whenever:update_crontab'
 
 after 'deploy:publishing', 'passenger:restart'
 
 after 'deploy:publishing', 'application:reload'
 
-after 'deploy:starting', 'sidekiq:quiet'
-after 'deploy:reverted', 'sidekiq:restart'
-after 'deploy:published', 'sidekiq:restart'
+#after 'deploy:starting', 'sidekiq:quiet'
+#after 'deploy:reverted', 'sidekiq:restart'
+#after 'deploy:published', 'sidekiq:restart'
