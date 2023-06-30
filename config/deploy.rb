@@ -3,6 +3,9 @@
 # config valid for current version and patch releases of Capistrano
 lock '~> 3.17.3'
 
+set :rvm_ruby_version, "ruby-3.1.2"
+set :default_env, { rvm_bin_path: "~/.rvm/bin" }
+
 set :application, 'library'
 set :repo_url, 'git@github.com:dastanabeuov/library.git'
 
@@ -17,25 +20,4 @@ append :linked_files, 'config/database.yml', 'config/master.key'
 # Default value for linked_dirs is []
 set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle .bundle public/system public/uploads storage]
 
-set :keep_releases, 3
-
-set :conditionally_migrate, true
-
-# Set unique identifier for background jobs
-#set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
-
-## Tasks
-#before 'deploy:starting', 'config_files:upload'
-
-#set :initial, true
-#before 'deploy:migrate', 'database:create' if fetch(:initial)
-
-#after 'deploy:finishing', 'whenever:update_crontab'
-
 after 'deploy:publishing', 'passenger:restart'
-
-after 'deploy:publishing', 'application:reload'
-
-#after 'deploy:starting', 'sidekiq:quiet'
-#after 'deploy:reverted', 'sidekiq:restart'
-#after 'deploy:published', 'sidekiq:restart'
