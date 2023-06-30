@@ -379,7 +379,7 @@ DEPENDENCIES
   memory_profiler
   omniauth
   pagy
-  pdfjs_viewer-rails
+  pdfjs_viewer-rails (~> 0.3.2)
   pg
   puma (~> 5.0)
   rack-mini-profiler
