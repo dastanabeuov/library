@@ -105,9 +105,6 @@ group :development do
   # For call-stack profiling flamegraphs
   gem "stackprof"
 
-  # Debugger
-  gem "debug"
-
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
