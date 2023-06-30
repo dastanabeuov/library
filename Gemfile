@@ -88,6 +88,7 @@ gem "mailtrap"
 
 #Bootstrap form
 gem "bootstrap_form", "~> 5.2"
+gem 'bootstrap', '~> 5.1.3'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
