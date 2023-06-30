@@ -378,6 +378,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise
+  execjs
   faker!
   image_processing (~> 1.2)
   importmap-rails
