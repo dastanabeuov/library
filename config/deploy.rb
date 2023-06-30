@@ -32,6 +32,8 @@ set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 
 #after 'deploy:finishing', 'whenever:update_crontab'
 
+after 'deploy:updated', 'deploy:precompile_assets'
+
 after 'deploy:publishing', 'passenger:restart'
 
 after 'deploy:publishing', 'application:reload'
