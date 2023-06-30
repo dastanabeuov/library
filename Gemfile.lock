@@ -374,12 +374,12 @@ DEPENDENCIES
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
-  json (~> 2.6, >= 2.6.3)
+  json (= 2.6.3)
   mailtrap
   memory_profiler
   omniauth
   pagy
-  pdfjs_viewer-rails (~> 0.3.2)
+  pdfjs_viewer-rails
   pg
   puma (~> 5.0)
   rack-mini-profiler

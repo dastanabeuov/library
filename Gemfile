@@ -53,8 +53,8 @@ gem "devise"
 gem "omniauth"
 
 # PDF preview
-gem 'json', '~> 2.6', '>= 2.6.3'
-gem 'pdfjs_viewer-rails', '~> 0.3.2'
+gem 'json', '2.6.3'
+gem 'pdfjs_viewer-rails'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
