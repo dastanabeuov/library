@@ -22,7 +22,7 @@ set :keep_releases, 3
 set :conditionally_migrate, true
 
 # Set unique identifier for background jobs
-set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
+#set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 
 ## Tasks
 #before 'deploy:starting', 'config_files:upload'
