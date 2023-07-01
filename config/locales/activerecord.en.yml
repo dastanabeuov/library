@@ -11,8 +11,10 @@ ru:
         author: "Автор"
         description: "Описание"
         main_pdf: "Главный файл(pdf)"
+        user_id: "Пользователь"
       category:
         name: "Название"
+        user_id: "Пользователь"
       group:
         name: "Название"
         group_type: "Тип"
@@ -20,7 +22,6 @@ ru:
         email: "Почта"
         phone: "Телефон"
         active: "Активация"
-        user_id: "Пользователь"
       user:
         first_name: "Имя"
         last_name: "Фамилия"
@@ -31,3 +32,4 @@ ru:
         email: "Почта"
         password: "Пароль"
         password_confirmation: "Подтверждение пароля"
+        group_id: "Группа"
