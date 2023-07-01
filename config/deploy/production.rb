@@ -4,8 +4,8 @@ server '192.227.241.211', user: 'deploy', roles: %w[app web db], primary: true
 
 # set :stage, :production
 # set :rails_env, :production
-set :stage, :development
-set :rails_env, :development
+set :stage, :production
+set :rails_env, :production
 
 set :branch, 'master'
 
