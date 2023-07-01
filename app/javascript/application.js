@@ -4,3 +4,5 @@ import "controllers"
 
 import "bootstrap"
 //import "popper"
+
+import "pdfjs_viewer"
