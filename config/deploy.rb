@@ -22,6 +22,8 @@ set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle .bundle pu
 
 after 'deploy:publishing', 'passenger:restart'
 
+set :keep_releases, 3
+
 # # Добавляем этап компиляции Importmap перед перезапуском приложения
 # namespace :deploy do
 #   task :compile_importmap do
