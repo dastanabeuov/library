@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group_users = User.all.where("group_id == ?", @group.id)
+    @group_users = User.where(group_id: @group.id)
   end
 
   def new
