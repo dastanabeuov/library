@@ -21,3 +21,18 @@ append :linked_files, 'config/database.yml', 'config/master.key'
 set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle .bundle public/system public/uploads storage]
 
 after 'deploy:publishing', 'passenger:restart'
+
+# # Добавляем этап компиляции Importmap перед перезапуском приложения
+# namespace :deploy do
+#   task :compile_importmap do
+#     on roles(:app) do
+#       within release_path do
+#         execute :bundle, :exec, "rails", "importmap:compile"
+#       end
+#     end
+#   end
+
+#   # После развертывания, компилируем Importmap и перезапускаем приложение
+#   after :publishing, :compile_importmap
+#   after :compile_importmap, 'passenger:restart'
+# end

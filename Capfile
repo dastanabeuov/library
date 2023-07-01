@@ -7,13 +7,12 @@ require 'capistrano/rails/migrations'
 require 'capistrano/rvm'
 require 'capistrano/bundler'
 require 'capistrano/rails'
-require 'capistrano/rails/assets'
-require 'capistrano/sidekiq'
 require 'capistrano/passenger'
-
+#require 'capistrano/rails/assets'
+#require 'whenever/capistrano'
+#require 'capistrano/sidekiq'
 #require 'capistrano3/unicorn'
 #require 'thinking_sphinx/capistrano'
-#require 'whenever/capistrano'
 
 # Load the SCM plugin appropriate to your project:
 #
