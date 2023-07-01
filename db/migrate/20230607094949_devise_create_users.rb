@@ -11,7 +11,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :phone, null: false, default: ""
       t.boolean :active, default: true
       t.integer :role, null: false, default: 0
-      t.references :group, null: false, foreign_key: true
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

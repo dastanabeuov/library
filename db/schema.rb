@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_19_051007) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_01_050132) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -40,8 +43,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_19_051007) do
   end
 
   create_table "book_categories", force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.integer "book_id", null: false
+    t.bigint "category_id", null: false
+    t.bigint "book_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_book_categories_on_book_id"
@@ -52,15 +55,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_19_051007) do
     t.string "title"
     t.string "author"
     t.text "description"
-    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_categories_on_user_id"
@@ -78,8 +81,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_19_051007) do
   end
 
   create_table "user_groups", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "group_id"
+    t.bigint "user_id"
+    t.bigint "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_user_groups_on_group_id"
@@ -94,7 +97,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_19_051007) do
     t.string "phone", default: "", null: false
     t.boolean "active", default: true
     t.integer "role", default: 0, null: false
-    t.integer "group_id", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -114,6 +116,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_19_051007) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "group_id", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["group_id"], name: "index_users_on_group_id"
