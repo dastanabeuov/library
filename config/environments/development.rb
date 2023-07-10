@@ -5,6 +5,18 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host:'localhost', port: 3000 }
 
+  ## MAILGUN
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "sandboxe2fe6ff4e19d4b38b881d4b12599f814.mailgun.org",
+    :user_name => "postmaster@sandboxe2fe6ff4e19d4b38b881d4b12599f814.mailgun.org",
+    :password => ENV.fetch('MAILGUN_PASSW')
+  }
+
+  ## MAILTRUP
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {
   #   :user_name => '51f2f8301c1e36',
@@ -15,6 +27,7 @@ Rails.application.configure do
   #   :authentication => :cram_md5
   # }
 
+  ## MAILTRUP
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {
   #   :address   => 'send.smtp.mailtrap.io',
@@ -25,6 +38,7 @@ Rails.application.configure do
   #   :authentication => 'plain',
   #   :enable_starttls_auto => true
   # }
+
   ## GMAIL
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
