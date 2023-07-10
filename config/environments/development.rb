@@ -13,7 +13,7 @@ Rails.application.configure do
     :port => 587,
     :domain => "sandboxe2fe6ff4e19d4b38b881d4b12599f814.mailgun.org",
     :user_name => "postmaster@sandboxe2fe6ff4e19d4b38b881d4b12599f814.mailgun.org",
-    :password => ENV.fetch('MAILGUN_PASSW')
+    :password => "0184457cf8a1bf6de3017b6536780169-262b213e-84411264"
   }
 
   ## MAILTRUP
@@ -39,18 +39,18 @@ Rails.application.configure do
   #   :enable_starttls_auto => true
   # }
 
-  ## GMAIL
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.doodle.kz',
-    port:                 25,
-    domain:               'doodle.kz',
-    user_name:            'info@doodle.kz',
-    password:             'A-z@12#12@',
-    authentication:       'plain',
-    enable_starttls_auto: true,
-    open_timeout:         5,
-    read_timeout:         5 }
+  # ## GMAIL
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address:              'smtp.doodle.kz',
+  #   port:                 25,
+  #   domain:               'doodle.kz',
+  #   user_name:            'info@doodle.kz',
+  #   password:             'A-z@12#12@',
+  #   authentication:       'plain',
+  #   enable_starttls_auto: true,
+  #   open_timeout:         5,
+  #   read_timeout:         5 }
 
   # Settings specified here will take precedence over those in config/application.rb.
 

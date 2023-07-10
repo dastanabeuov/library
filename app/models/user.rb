@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   belongs_to :group
 
-  has_many :user_groups
+  has_many :user_groups, dependent: :destroy
   has_many :groups, through: :user_groups
 
   has_many :categories, dependent: :destroy

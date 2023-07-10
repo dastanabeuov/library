@@ -13,7 +13,7 @@ Rails.application.configure do
     :port => 587,
     :domain => "sandboxe2fe6ff4e19d4b38b881d4b12599f814.mailgun.org",
     :user_name => "postmaster@sandboxe2fe6ff4e19d4b38b881d4b12599f814.mailgun.org",
-    :password => ENV.fetch('MAILGUN_PASSW')
+    :password => "0184457cf8a1bf6de3017b6536780169-262b213e-84411264")
   }
 
   # Settings specified here will take precedence over those in config/application.rb.
