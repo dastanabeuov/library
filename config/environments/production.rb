@@ -1,20 +1,20 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  # config.action_mailer.default_url_options = { host: 'library.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: '192.227.241.211' }
 
-  config.action_mailer.default_url_options = { host:'localhost', port: 3000 }
+  # config.action_mailer.default_url_options = { host:'localhost', port: 3000 }
+
+  ## MAILGUN
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'gmail.com',
-    user_name:            ENV['GMAIL_USERNAME'],
-    password:             ENV['GMAIL_PASSWORD'],
-    authentication:       'plain',
-    enable_starttls_auto: true,
-    open_timeout:         5,
-    read_timeout:         5 }
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "sandboxe2fe6ff4e19d4b38b881d4b12599f814.mailgun.org",
+    :user_name => "postmaster@sandboxe2fe6ff4e19d4b38b881d4b12599f814.mailgun.org",
+    :password => ENV.fetch('MAILGUN_PASSW')
+  }
 
   # Settings specified here will take precedence over those in config/application.rb.
 
