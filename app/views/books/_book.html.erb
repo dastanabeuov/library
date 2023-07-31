@@ -23,17 +23,15 @@
         <strong>Описание:</strong>
         <%= book.description %>
       </p>
-      <% if user_signed_in? %>
-        <p>
-          <% if book.main_pdf.attached? && params[:controller] == 'books' && params[:action] == 'show' %>
-          <strong>Смотреть:</strong>  
-            <ul>          
-              <li><%= link_to "с помощью полного просмотра", pdf_view.full_path(file: @pdf_url) %></li>
-              <li><%= link_to "с помощью минимального просмотра", pdf_view.minimal_path(file: @pdf_url) %></li>
-            </ul>
-          <% end %>
-        </p>
-      <% end %>
+      <p>
+        <% if book.main_pdf.attached? && params[:controller] == 'books' && params[:action] == 'show' %>
+        <strong>Смотреть:</strong>  
+          <ul>          
+            <li><%= link_to "с помощью полного просмотра", pdf_view.full_path(file: @pdf_url) %></li>
+            <li><%= link_to "с помощью минимального просмотра", pdf_view.minimal_path(file: @pdf_url) %></li>
+          </ul>
+        <% end %>
+      </p>
     </div>
 
     <div class="col-4">

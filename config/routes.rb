@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 
   resources :groups
   resources :users
-  resources :books
+  resources :books do
+    get :preview_book, on: :member
+  end
   resources :contact_form_registration, only: %i[new create]
   resources :contact_form_qa, only: %i[new create]
   resources :categories do

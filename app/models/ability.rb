@@ -53,14 +53,14 @@ class Ability
   def guest_abilities
     main_page_ability
 
-    can :show, Book # Может только смотреть страницу списков книг
+    can :preview_book, Book # Может только предварительный просмотр книг
     can :index, Book # Может только смотреть страницу списков книг
     can :filter, Category # Может только смотреть страницу фильтров по категориям
   end
 
   def sample_user_abilities
 
-    can :show, Book # Может только смотреть страницу списков книг
+    can :preview_book, Book # Может только предварительный просмотр книг
     can :index, Book # Может только смотреть страницу списков книг
     can :filter, Category # Может только смотреть страницу фильтров по категориям
   end

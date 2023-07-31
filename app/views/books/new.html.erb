@@ -1,8 +1,8 @@
 <h1>Новая книга</h1>
 
-<%= render "form", book: @book %>
-
 <div>
   <%= link_to "Вернуться к книгам", books_path %> |
   <%= link_to 'Добавить категорию', new_category_path %>
 </div>
+
+<%= render "form", book: @book %>

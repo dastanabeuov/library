@@ -1,8 +1,11 @@
 class BooksController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
-  load_and_authorize_resource except: :index
+  skip_before_action :authenticate_user!, only: [:index, :preview_book]
+  load_and_authorize_resource except: [:index, :preview_book]
 
-  before_action :set_book, only: %i[ show edit update destroy]
+  before_action :set_book, only: %i[ show edit update destroy preview_book]
+
+  def preview_book
+  end
 
   # GET /books or /books.json
   def index

@@ -22,7 +22,11 @@
                 <h5 class="card-title"><%= book.title.truncate(25, omission: '...') %></h5>
               </div>
               <div class="card-footer text-center">
-                <%= link_to "Читать", book, class: "btn btn-link btn-sm" %>
+                <% if user_signed_in? %>
+                  <%= link_to "Читать", book, class: "btn btn-link btn-sm" %>
+                <% else %>
+                  <%= link_to "Читать", preview_book_book_path(book), class: "btn btn-link btn-sm" %>
+                <% end %>
               </div>
             </div>
           </div>
