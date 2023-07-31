@@ -29,9 +29,7 @@ class Ability
 
   def admin_abilities
     # Права доступа для администратора
-    can :read, 'main_pages/index' # Может только смотреть страницы
-    can :read, 'main_pages/help' # Может только смотреть страницы
-    can :read, 'main_pages/info' # Может только смотреть страницы
+    main_page_ability
 
     can :read, Group, id: user.group_id # Может смотреть только свою группу
     can :update, Group, id: user.group_id # Может обновлять только свою группу
@@ -46,29 +44,30 @@ class Ability
   end
 
   def student_and_employee_abilities
-    can :read, 'main_pages/index' # Может только смотреть страницы
-    can :read, 'main_pages/help' # Может только смотреть страницы
-    can :read, 'main_pages/info' # Может только смотреть страницы
+    main_page_ability
 
     can :read, Book # Может только смотреть книги
     can [:read, :filter], Category # Может только смотреть категории
   end
 
   def guest_abilities
-    can :read, 'main_pages/index' # Может только смотреть страницы
-    can :read, 'main_pages/help' # Может только смотреть страницы
-    can :read, 'main_pages/info' # Может только смотреть страницы
+    main_page_ability
 
+    can :show, Book # Может только смотреть страницу списков книг
     can :index, Book # Может только смотреть страницу списков книг
     can :filter, Category # Может только смотреть страницу фильтров по категориям
   end
 
   def sample_user_abilities
+
+    can :show, Book # Может только смотреть страницу списков книг
+    can :index, Book # Может только смотреть страницу списков книг
+    can :filter, Category # Может только смотреть страницу фильтров по категориям
+  end
+
+  def main_page_ability
     can :read, 'main_pages/index' # Может только смотреть страницы
     can :read, 'main_pages/help' # Может только смотреть страницы
     can :read, 'main_pages/info' # Может только смотреть страницы
-
-    can :index, Book # Может только смотреть страницу списков книг
-    can :filter, Category # Может только смотреть страницу фильтров по категориям
   end
 end

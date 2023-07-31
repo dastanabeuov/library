@@ -1,7 +1,9 @@
 <%= render @book %>
 
-<div class="pt-5">
-  <%= link_to "Изменить эту книгу", edit_book_path(@book) %> |
-  <%= link_to "Назад к книгам", books_path %> |
-  <%= link_to "Удалить эту книгу", @book, data: { turbo_method: :delete, turbo_confirm: 'Вы уверены?' } %>
-</div>
+<% if user_signed_in? %>
+  <div class="pt-5">
+    <%= link_to "Изменить эту книгу", edit_book_path(@book) %> |
+    <%= link_to "Назад к книгам", books_path %> |
+    <%= link_to "Удалить эту книгу", @book, data: { turbo_method: :delete, turbo_confirm: 'Вы уверены?' } %>
+  </div>
+<% end %>
